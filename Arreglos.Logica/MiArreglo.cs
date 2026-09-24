@@ -7,7 +7,7 @@ namespace Arreglos.Logica
     public class MiArreglo
     {
         //Atributos o campos
-        private int _tope;
+        private int _tope;   // tamaño logico 
         private int[] _arreglo;
         //Constructor
         public MiArreglo(int n) //recibe tamanio
@@ -30,6 +30,44 @@ namespace Arreglos.Logica
                 _arreglo[i] = oRandom.Next(minimo, maximo);
             }
             _tope = N;  //reescalar el tope al tamaño del arreglo
+        }
+        //Metodo ordenar (burbuja)
+        public void Ordenar(bool ascendente)
+        {
+            for (int i = 0; i<_tope-1; i++)
+            {
+                for (int j = i + 1; j < _tope; j++)
+                {
+                    if (ascendente)
+                    {
+                        if (_arreglo[i] > _arreglo[j]) //orden ascendente
+                        {
+                            Cambiar(ref _arreglo[i], ref _arreglo[j]);
+                        }
+                    }
+                    else
+                    {
+                        if (_arreglo[i] < _arreglo[j]) //orden descendente
+                        {
+                            Cambiar(ref _arreglo[i], ref _arreglo[j]);
+                        }
+                    }
+                }
+            }
+        }
+
+        //SOBRECARGA DE METODO ORDENAR
+        public void Ordenar()
+        {
+            Ordenar(true); //llama al metodo ordenar con parametro ascendente
+        }
+
+        //Metodo cambiar
+        private void Cambiar(ref int a, ref int b)
+        {
+            int aux = a;
+            a = b;
+            b = aux;
         }
 
         //Metodo ToString
