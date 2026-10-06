@@ -105,18 +105,40 @@ namespace Arreglos.Logica
 
         }
 
+        public void Eliminar(int posicion) 
+        {
+            if(EstaVacio)
+            {
+                throw new Exception("El arreglo esta vacio");
+            }
+            if (posicion < 0)
+            {
+                posicion = 0;
+            }
+            if (posicion > _tope)
+            {
+                posicion = _tope;
+            }
+
+            for (int i = posicion; i < _tope - 1; i++)
+            {
+                _arreglo[i] = _arreglo[i + 1]; //desplazar elementos de izquierda a derecha
+            }
+            _tope--; //decrementar el tope
+        }
+
         //Metodo ToString
         public override string ToString()
         {
             if(EstaVacio)
             {
-                return "Arreglo vacio";
+                return "esta vacio";
             }
 
 
             string cadena = string.Empty;       //limpiar cadena vacia
             int contador = 0; 
-            for (int i = 0; i < _tope; i++)
+            for (int i = 0; i < _tope+1; i++)
             {
                 cadena += $"{_arreglo[i]}\t";    //concatenar los elementos del arreglo
                 contador++;
