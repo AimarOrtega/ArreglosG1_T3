@@ -23,10 +23,20 @@ try
     Console.WriteLine(verPares);        //tostring
     Console.ReadKey();
 
+    //primos
+    Console.WriteLine("\nPrimos\n");
+    var verPrimos = oMiArreglo.ObtenerPrimos();
+    Console.WriteLine(verPrimos);        //tostring
+    Console.ReadKey();
+
+    Console.WriteLine("\nPrimos ordenados\n");
+    verPrimos.Ordenar(true);			//false desendente, true ascendente
+    Console.WriteLine(verPrimos);        //tostring
+    Console.ReadKey();
 }
-catch (Exception)
+catch (Exception ex)
 {
-    throw;
+    Console.WriteLine(ex.Message);
 }
 /*oMiArreglo.Llenar(1, 20);      //Tamaño logico
 Console.WriteLine(oMiArreglo);
